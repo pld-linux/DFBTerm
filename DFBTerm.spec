@@ -1,0 +1,53 @@
+Summary:	DFBTerm - terminal application for DirectFB
+Summary(pl):	DFBTerm - emulator terminala dla DirectFB
+Name:		DFBTerm
+Version:	0.8.0
+Release:	1
+License:	MIT
+Group:		Applications/Graphics
+Source0:	http://www.directfb.org/downloads/Programs/%{name}-%{version}.tar.gz
+# Source0-md5:	f9042423b73cc13ead08449d067283de
+Patch0:		%{name}-update.patch
+Patch1:		%{name}-font.patch
+URL:		http://www.directfb.org/index.php?path=Development/Projects/DFBTerm
+BuildRequires:	DirectFB-devel >= 0.9.14
+BuildRequires:	LiTE-devel >= 0.0.1
+BuildRequires:	automake
+BuildRequires:	pkgconfig
+Requires:	DirectFB-font-ft2
+Requires:	DirectFB-image-png
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%description
+DFBTerm is a terminal application for DirectFB. It uses LiTE (LiTE is
+a Toolkit Engine) and has a very nice anti aliased fixed width font.
+ 
+%description -l pl
+DFBTerm to emulator terminala dla DirectFB. Korzysta z toolkitu LiTE i
+ma bardzo ³adny font o sta³ej szeroko¶ci znaków z antyaliasingiem.
+
+%prep
+%setup -q
+%patch0 -p1
+%patch1 -p1
+
+%build
+cp -f /usr/share/automake/config.sub .
+%configure
+
+%{__make}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(644,root,root,755)
+%doc AUTHORS COPYING ChangeLog
+%attr(755,root,root) %{_bindir}/dfbterm
+%attr(755,root,root) %{_sbindir}/dfbterm-pty-helper
