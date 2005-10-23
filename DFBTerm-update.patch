@@ -1,0 +1,46 @@
+--- DFBTerm-0.8.0/src/term.c.orig	2005-02-14 22:09:49.000000000 +0100
++++ DFBTerm-0.8.0/src/term.c	2005-10-23 19:56:33.716629856 +0200
+@@ -153,6 +153,7 @@
+      IDirectFBSurface       *surface;
+      IDirectFBEventBuffer   *buffer;
+      IDirectFBFont          *font;
++     DFBRectangle           win_rect;
+      struct _vtx            *vtx;
+      Term                   *term;
+      char                   *command    = NULL;
+@@ -271,11 +272,12 @@
+      term->height = term->CH * termheight;
+ 
+      /* Create window */
+-     term->lw = lite_new_window (NULL, 
+-                                LITE_CENTER_HORIZONTALLY,
+-                                LITE_CENTER_VERTICALLY,
+-                                term->width+2, term->height,
+-                                 DWCAPS_ALPHACHANNEL, "Terminal");
++     win_rect.x = LITE_CENTER_HORIZONTALLY;
++     win_rect.y = LITE_CENTER_VERTICALLY;
++     win_rect.w = term->width+2;
++     win_rect.h = term->height;
++     ret = lite_new_window (NULL, &win_rect,
++                                 DWCAPS_ALPHACHANNEL, liteDefaultWindowTheme, "Terminal", &term->lw);
+      if (!term->lw) {
+           lite_close();
+           dfb->Release (dfb);
+@@ -792,7 +794,7 @@
+      if (term->modifiers & DIMM_ALT) /* meta? */
+           qual |= 8;
+ 
+-     if (lite_theme_loaded()) {
++     if (lite_default_window_theme_loaded()) {
+           evt->x -= 5;
+           evt->y -= 23;
+      }
+@@ -917,7 +919,7 @@
+ {
+      struct _vtx *vtx = term->vtx;
+ 
+-     if (lite_theme_loaded()) {
++     if (lite_default_window_theme_loaded()) {
+           evt->x -= 5;
+           evt->y -= 23;
+      }
