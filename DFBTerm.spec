@@ -1,5 +1,5 @@
 Summary:	DFBTerm - terminal application for DirectFB
-Summary(pl.UTF-8):   DFBTerm - emulator terminala dla DirectFB
+Summary(pl.UTF-8):	DFBTerm - emulator terminala dla DirectFB
 Name:		DFBTerm
 Version:	0.8.0
 Release:	1
