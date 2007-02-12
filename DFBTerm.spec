@@ -1,5 +1,5 @@
 Summary:	DFBTerm - terminal application for DirectFB
-Summary(pl):	DFBTerm - emulator terminala dla DirectFB
+Summary(pl.UTF-8):   DFBTerm - emulator terminala dla DirectFB
 Name:		DFBTerm
 Version:	0.8.0
 Release:	1
@@ -22,9 +22,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 DFBTerm is a terminal application for DirectFB. It uses LiTE (LiTE is
 a Toolkit Engine) and has a very nice anti aliased fixed width font.
  
-%description -l pl
+%description -l pl.UTF-8
 DFBTerm to emulator terminala dla DirectFB. Korzysta z toolkitu LiTE i
-ma bardzo ≥adny font o sta≥ej szeroko∂ci znakÛw z antyaliasingiem.
+ma bardzo ≈Çadny font o sta≈Çej szeroko≈õci znak√≥w z antyaliasingiem.
 
 %prep
 %setup -q
