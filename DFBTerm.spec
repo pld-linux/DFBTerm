@@ -2,13 +2,13 @@ Summary:	DFBTerm - terminal application for DirectFB
 Summary(pl.UTF-8):	DFBTerm - emulator terminala dla DirectFB
 Name:		DFBTerm
 Version:	0.8.15
-Release:	10
+Release:	11
 License:	MIT
 Group:		Applications/Graphics
-Source0:	http://www.directfb.org/downloads/Programs/%{name}-%{version}.tar.gz
+Source0:	http://www.directfb.net/downloads/Programs/%{name}-%{version}.tar.gz
 # Source0-md5:	0e554bbb65052289d01415f7042d72d2
 Patch0:		%{name}-font.patch
-URL:		http://www.directfb.org/index.php?path=Development/Projects/DFBTerm
+URL:		http://www.directfb.net/index.php?path=Development/Projects/DFBTerm
 BuildRequires:	DirectFB-devel >= 0.9.14
 BuildRequires:	LiTE-devel >= 0.4.2
 BuildRequires:	automake
